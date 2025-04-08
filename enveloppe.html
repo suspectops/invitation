@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation de Mariage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .enveloppe {
+            width: 300px;
+            height: 150px;
+            background-color: #b3b3b3;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .enveloppe::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background-color: #fff;
+            top: 50%;
+            left: 0;
+        }
+        .invitation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            animation: openInvitation 1s forwards;
+        }
+        .enveloppe.open .invitation {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes openInvitation {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 10px 0;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="enveloppe" onclick="ouvrirInvitation()">
+        <div class="invitation">
+            <h1>Mariage de Fahed et Sarah</h1>
+            <p><strong>Date :</strong> 24 octobre 2025</p>
+            <p><strong>Lieu :</strong> Villiers-le-Bel</p>
+            <p>Nous serions ravis de vous compter parmi nous pour cette journée exceptionnelle !</p>
+        </div>
+    </div>
+
+    <script>
+        function ouvrirInvitation() {
+            document.querySelector('.enveloppe').classList.add('open');
+        }
+    </script>
+</body>
+</html>
